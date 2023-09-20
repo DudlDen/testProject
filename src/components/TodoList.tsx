@@ -1,5 +1,5 @@
 import React, { useContext, useEffect } from "react";
-import { FlatList, KeyboardAvoidingView, ViewStyle } from "react-native";
+import { FlatList, KeyboardAvoidingView, SafeAreaView, ViewStyle } from "react-native";
 import { ListItem } from "./ListItem";
 import { AppContext } from "../context/AppContext";
 import { Input } from "./Input";
@@ -48,16 +48,17 @@ export function TodoList({}: Props) {
   
   return (
     <KeyboardAvoidingView style={$container}>
-      <HeaderPanel />
-      <ButtonPanel />
-      
-      <Input />
-      
-      <FlatList
-        data={activeItems}
-        renderItem={({ item }) => <ListItem item={item} />}
-      />
-    
+      <SafeAreaView>
+        <HeaderPanel />
+        <ButtonPanel />
+        
+        <Input />
+        
+        <FlatList
+          data={activeItems}
+          renderItem={({ item }) => <ListItem item={item} />}
+        />
+      </SafeAreaView>
     </KeyboardAvoidingView>
   
   );
